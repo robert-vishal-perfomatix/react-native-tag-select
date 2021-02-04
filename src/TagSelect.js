@@ -51,7 +51,7 @@ class TagSelect extends React.Component {
     value: {}
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const value = {}
     this.props.value.forEach((val) => {
       value[val[[this.props.keyAttr]] || val] = val
@@ -64,7 +64,7 @@ class TagSelect extends React.Component {
    * @description Return the number of items selected
    * @return {Number}
    */
-  get totalSelected () {
+  get totalSelected() {
     return Object.keys(this.state.value).length
   }
 
@@ -72,7 +72,7 @@ class TagSelect extends React.Component {
    * @description Return the items selected
    * @return {Array}
    */
-  get itemsSelected () {
+  get itemsSelected() {
     const items = []
 
     Object.entries(this.state.value).forEach(([key]) => {
@@ -88,23 +88,30 @@ class TagSelect extends React.Component {
    * @return {Void}
    */
   handleSelectItem = (item) => {
+    //rb
     const key = item[this.props.keyAttr] || item
-
-    const value = { ...this.state.value }
+    var value = { ...this.state.value }
     const found = this.state.value[key]
 
     // Item is on array, so user is removing the selection
     if (found) {
-      delete value[key]
+      // delete value[key]
     } else {
       // User is adding but has reached the max number permitted
-      if (this.props.max && this.totalSelected >= this.props.max) {
-        if (this.props.onMaxError) {
-          return this.props.onMaxError()
-        }
-      }
+      // if (this.props.max && this.totalSelected >= this.props.max) {
+      //   if (this.props.onMaxError) {
+      //     return this.props.onMaxError()
+      //   }
+      // }
+      // value[key] = item
+      if (value !== undefined || value.length != 0) {
 
-      value[key] = item
+        let newValue = value
+        value = []
+        value[key] = item
+
+      } else {
+      }
     }
 
     return this.setState({ value }, () => {
@@ -114,7 +121,7 @@ class TagSelect extends React.Component {
     })
   }
 
-  render () {
+  render() {
     return (
       <View
         style={[
