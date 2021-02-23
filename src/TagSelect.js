@@ -28,7 +28,8 @@ class TagSelect extends React.Component {
     onItemPress: PropTypes.func,
 
     // Styles
-    containerStyle: ViewPropTypes.style
+    containerStyle: ViewPropTypes.style,
+    customVar: bool
   }
 
   static defaultProps = {
@@ -44,7 +45,8 @@ class TagSelect extends React.Component {
     onMaxError: null,
     onItemPress: null,
 
-    containerStyle: {}
+    containerStyle: {},
+    customVar:false
   }
 
   state = {
@@ -121,7 +123,7 @@ handleSelectItem = (item) => {
       }
     }
      }
-     
+
     return this.setState({ value }, () => {
       if (this.props.onItemPress) {
         this.props.onItemPress(item)
