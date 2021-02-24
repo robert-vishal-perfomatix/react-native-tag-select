@@ -29,7 +29,7 @@ class TagSelect extends React.Component {
 
     // Styles
     containerStyle: ViewPropTypes.style,
-    customVar: bool
+    customVar: PropTypes.bool
   }
 
   static defaultProps = {
